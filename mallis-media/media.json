@@ -1,0 +1,53 @@
+{
+  "videos": [
+    {
+      "type": "youtube",
+      "id": "BsVLLY-HPws",
+      "title": "Mallis Home Care"
+    },
+    {
+      "type": "instagram",
+      "url": "https://www.instagram.com/reel/DSh-7BLgQZu/",
+      "poster": "mallis-media/founder-poster.jpg",
+      "title": "Founder P. Mahendran introduces Mallis Home Care"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "mallis-media/gallery/award-trophy.jpg",
+      "caption": "Bharat Ratna National Service Excellence Award 2026"
+    },
+    {
+      "src": "mallis-media/gallery/award-certificate.jpg",
+      "caption": "Award certificate presented to Mallis Home Care"
+    },
+    {
+      "src": "mallis-media/gallery/bni-award.jpg",
+      "caption": "BNI Notable Networker Award"
+    },
+    {
+      "src": "mallis-media/gallery/bni-meeting.jpg",
+      "caption": "Founder P. Mahendran at BNI Azpire"
+    },
+    {
+      "src": "mallis-media/gallery/services-1.jpg",
+      "caption": "Our services"
+    },
+    {
+      "src": "mallis-media/gallery/tamil-services.jpg",
+      "caption": "மல்லீஸ் ஹோம் கேர் சேவைகள்"
+    },
+    {
+      "src": "mallis-media/gallery/services-2.jpg",
+      "caption": "Care at your door"
+    },
+    {
+      "src": "mallis-media/gallery/home-cooking.jpg",
+      "caption": "Home cooking services"
+    },
+    {
+      "src": "mallis-media/gallery/services-3.jpg",
+      "caption": "Compassionate in-home assistance"
+    }
+  ]
+}
