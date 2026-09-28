@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "mallis.goldenyearsamerica.org"
+        }
+      ],
+      "destination": "/mallis"
+    }
+  ]
+}
