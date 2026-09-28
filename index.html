@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mallis Home Care | Trusted home nursing and care across Tamil Nadu</title>
 <meta name="description" content="Mallis Home Care provides registered nurses, trained attenders, patient care, baby care, cooking and housekeeping at home, for families in urban and rural areas across Tamil Nadu.">
-<link rel="canonical" href="https://goldenyearsamerica.org/mallis">
+<link rel="canonical" href="https://malliscare.com/">
+<meta property="og:url" content="https://malliscare.com/">
 <meta property="og:title" content="Mallis Home Care | Trusted home care across Tamil Nadu">
 <meta property="og:description" content="Registered nurses, trained attenders and background-verified staff at your home. Call +91 91235 31213.">
-<meta property="og:image" content="https://goldenyearsamerica.org/mallis-media/founder-poster.jpg">
+<meta property="og:image" content="https://malliscare.com/mallis-media/founder-poster.jpg">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#14403E">
 <link rel="icon" href="mallis-media/icon.png">
@@ -110,6 +111,9 @@
   .reel.no-video .play-ig { display: flex; }
   .reel.no-video .sound { display: none; }
   .reel.no-video video, .reel.no-video .yt { display: none; }
+  .reel.ig { background: #FFFFFF; }
+  .reel.ig iframe { position: absolute; left: 0; top: -56px; width: 100%; height: calc(100% + 220px); border: 0; object-fit: initial; }
+  .reel.ig .sound, .reel.ig .shade, .reel.ig .caption, .reel.ig .hero-poster, .reel.ig .play-ig { display: none; }
   .reel .hero-poster { display: none; }
   .reel.no-video .hero-poster { display: block; }
   .reel.no-video .caption small { display: none; }
@@ -761,7 +765,10 @@ function loadYT() {
    1) plays mallis-media/videos/mahendran-intro.mp4 if it has been uploaded
    2) otherwise plays this YouTube video automatically (silent, tap for sound)
    3) otherwise shows the founder photo with a "Watch on Instagram" button */
-const HERO_YOUTUBE_ID = "BsVLLY-HPws";
+// Until mahendran-intro.mp4 is uploaded, show the founder photo with a "Watch on Instagram" button.
+// To show Instagram's own player there instead, change false to true.
+const HERO_USE_INSTAGRAM_EMBED = false;
+const HERO_INSTAGRAM_REEL = "DSh-7BLgQZu";
 (function () {
   const reel = document.getElementById("hero-reel");
   const video = document.getElementById("hero-video");
@@ -778,30 +785,18 @@ const HERO_YOUTUBE_ID = "BsVLLY-HPws";
   const fail = function () {
     if (switched) return; switched = true;
     video.pause(); video.remove();
-    if (!HERO_YOUTUBE_ID || !/^https?:$/.test(location.protocol)) { reel.classList.add("no-video"); return; }
-    const box = document.createElement("div"); box.className = "yt"; box.id = "hero-yt";
-    reel.insertBefore(box, reel.firstChild);
-    let yp = null, muted = true;
-    impl = {
-      mute: function () { muted = true; if (yp && yp.mute) yp.mute(); },
-      unmute: function () { muted = false; if (yp && yp.unMute) { yp.unMute(); yp.setVolume(100); } },
-      isMuted: function () { return muted; },
-      play: function () { if (yp && yp.playVideo) yp.playVideo(); },
-      pause: function () { if (yp && yp.pauseVideo) yp.pauseVideo(); }
-    };
-    const make = function () {
-      yp = new YT.Player("hero-yt", {
-        videoId: HERO_YOUTUBE_ID,
-        playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: HERO_YOUTUBE_ID, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin, widget_referrer: location.href },
-        events: {
-          onReady: function (e) { e.target.mute(); e.target.playVideo(); },
-          onError: function () { reel.classList.add("no-video"); }
-        }
-      });
-    };
-    if (window.YT && window.YT.Player) make(); else { ytQueue.push(make); loadYT(); }
-    // If YouTube can't load at all, show the Instagram fallback
-    setTimeout(function () { if (!yp || !yp.playVideo) reel.classList.add("no-video"); }, 8000);
+    impl = { mute: function () {}, unmute: function () {}, isMuted: function () { return true; }, play: function () {}, pause: function () {} };
+    if (!HERO_USE_INSTAGRAM_EMBED || !HERO_INSTAGRAM_REEL || !/^https?:$/.test(location.protocol)) { reel.classList.add("no-video"); return; }
+    // Show the Instagram reel itself (Instagram plays it when tapped)
+    const f = document.createElement("iframe");
+    f.src = "https://www.instagram.com/reel/" + HERO_INSTAGRAM_REEL + "/embed/";
+    f.title = "Founder P. Mahendran introduces Mallis Home Care (Instagram)";
+    f.setAttribute("scrolling", "no");
+    f.setAttribute("allowtransparency", "true");
+    f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; clipboard-write");
+    f.loading = "eager";
+    reel.classList.add("ig");
+    reel.insertBefore(f, reel.firstChild);
   };
   source.addEventListener("error", fail);
   video.addEventListener("error", fail);
@@ -1013,6 +1008,11 @@ fetch("mallis-media/media.json", { cache: "no-cache" })
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
     if (!check() || form._honey.value) return;
+    if (!/^https?:$/.test(location.protocol)) {
+      box.className = "msg err";
+      box.textContent = "Preview mode: this form only sends from the live website (malliscare.com). To test here, use Send on WhatsApp.";
+      return;
+    }
     const d = collect();
     d._subject = "New Mallis enquiry: " + d.Name + " (" + d.Town + ", " + d.Services + ")";
     d._template = "table"; d._captcha = "false";
