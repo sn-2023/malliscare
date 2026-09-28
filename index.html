@@ -78,7 +78,7 @@
   nav.main { display: flex; align-items: center; gap: 26px; }
   nav.main a.link { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15.5px; }
   nav.main a.link:hover { color: var(--accent-ink); }
-  @media (max-width: 960px) { nav.main a.link { display: none; } }
+  @media (max-width: 1180px) { nav.main a.link { display: none; } }
   @media (max-width: 520px) { .logo img { height: 44px; } header.site .btn { min-height: 44px; padding: 0 16px; font-size: 15px; } }
 
   /* Hero */
@@ -269,10 +269,22 @@
   .cta p { margin-top: 6px; color: #F2C765; font-size: 18px; }
   .cta .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .abroad { background: var(--navy-soft); }
-  .abroad .wrap { padding: 44px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
-  .abroad h2 { font-size: 24px; font-weight: 900; color: var(--navy); }
-  .abroad p { margin-top: 4px; color: var(--muted); }
-  .abroad .btn { background: var(--navy); color: #FFFFFF; }
+  .abroad .wrap { padding: 72px 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 48px; align-items: center; }
+  .abroad .gya { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .abroad .gya svg { width: 46px; height: 46px; flex-shrink: 0; }
+  .abroad .gya strong { display: block; font-family: var(--display); font-weight: 400; font-size: 21px; color: var(--navy); line-height: 1.1; }
+  .abroad .gya span { font-size: 14px; color: var(--muted); }
+  .abroad h2 { font-size: clamp(28px, 3.2vw, 38px); color: var(--navy); }
+  .abroad p { margin-top: 14px; color: var(--muted); font-size: 18px; max-width: 36em; }
+  .abroad ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .abroad li { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; }
+  .abroad li svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; }
+  .abroad .card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 50px -30px rgba(14,47,46,.35); }
+  .abroad .card .btn { width: 100%; }
+  .abroad .card .btn-navy { background: var(--navy); color: #FFFFFF; }
+  .abroad .card .btn-line { border-color: var(--navy); color: var(--navy); background: #FFFFFF; }
+  .abroad .card small { color: var(--muted); font-size: 14px; text-align: center; }
+  @media (max-width: 860px) { .abroad .wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 56px 0; } }
 
   footer { background: var(--navy-deep); color: #C5D6D0; padding: 40px 0 calc(90px + env(safe-area-inset-bottom, 0px)); font-size: 15px; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
@@ -310,6 +322,7 @@
       <a class="link" href="#awards">Awards</a>
       <a class="link" href="#enquire">Enquire</a>
       <a class="link" href="#contact">Contact</a>
+      <a class="link" href="#usa">From the US</a>
       <a class="btn btn-green" href="tel:+919123531213">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
         Call now
@@ -682,13 +695,26 @@
     </div>
   </section>
 
-  <section class="abroad">
+  <section class="abroad" id="usa">
     <div class="wrap">
       <div>
-        <h2>Family living in the US?</h2>
-        <p>Golden Years America arranges Mallis Home Care for your parents, with calls at a time that suits your US schedule.</p>
+        <div class="gya">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3.5 37 17.5H33.5V36.5H6.5V17.5H3Z" fill="#14403E" stroke="#14403E" stroke-width="1" stroke-linejoin="round"></path><g fill="none" stroke="#E9A21B" stroke-width="1.7" stroke-linejoin="round"><path d="M20 18.3 13.76 29.1H26.24Z"></path><path d="M20 32.7 26.24 21.9H13.76Z"></path></g><circle cx="20" cy="25.5" r="1.5" fill="#E9A21B"></circle></svg>
+          <div><strong>Golden Years America</strong><span>Our partner for families in the US</span></div>
+        </div>
+        <h2>Family living in the US? Care for your parents, arranged from there.</h2>
+        <p>Golden Years America helps Indian families living in the United States arrange trusted home care for their parents in Tamil Nadu. You share your parents' needs from the US, the team calls you at a time that suits your schedule, and Mallis Home Care's registered nurses and trained attenders provide the care at your parents' home.</p>
+        <ul>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#E9A21B"></circle><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0E2F2E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Arrange everything from the US, on your time zone</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#E9A21B"></circle><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0E2F2E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Care delivered in person by the Mallis Home Care team</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#E9A21B"></circle><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0E2F2E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Stay in touch with updates on WhatsApp</li>
+        </ul>
       </div>
-      <a class="btn" href="https://goldenyearsamerica.org/interest?src=mallis">Arrange care from the US</a>
+      <div class="card">
+        <a class="btn btn-navy" href="https://goldenyearsamerica.org/?src=mallis" target="_blank" rel="noopener">Visit goldenyearsamerica.org</a>
+        <a class="btn btn-line" href="https://goldenyearsamerica.org/interest?src=mallis" target="_blank" rel="noopener">Request a call from the US</a>
+        <small>Opens the Golden Years America website</small>
+      </div>
     </div>
   </section>
 </main>
@@ -697,6 +723,7 @@
   <div class="wrap">
     <p>© Mallis Home Care, Tamil Nadu</p>
     <p><a href="tel:+919123531213">+91 91235 31213</a> &nbsp;|&nbsp; <a href="tel:+919842626010">+91 98426 26010</a></p>
+    <p>Family in the US? <a href="https://goldenyearsamerica.org/?src=mallis" target="_blank" rel="noopener">Golden Years America</a></p>
   </div>
 </footer>
 
